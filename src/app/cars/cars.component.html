@@ -5,9 +5,14 @@
   <p>Машина добавлена!</p>
 </ng-template>
 <hr>
-<p *ngFor="let car of cars; let ind = index"><b>{{ ind + 1 }}</b>. Название: {{ car }}</p>
-<ul>
-  <li *ngFor="let item of items; let i = index">
-    <b>{{ i + 1 }}</b> - <i>{{ item.name }}</i>
+
+<ul class="list-item">
+  <li  *ngFor="let car of cars; let i = index">
+      <div
+      [ngStyle]="{'background-color': (i + 1) % 2 === 0 ? 'red' : 'green', color: 'white'}"
+      [ngClass]="{'big-text': setBigCarText(car)}"
+      >
+      <b>{{ i + 1 }}</b>. Название: {{ car }}
+  </div>
   </li>
 </ul>
