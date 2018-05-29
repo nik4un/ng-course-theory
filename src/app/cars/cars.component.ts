@@ -10,6 +10,12 @@ export class CarsComponent {
   carName = '';
   addCarStatus = false;
   cars = ['Ford', 'Audi', 'BMW', 'Mazda', 'LADA', 'BENTLY'];
+  dates = [
+    new Date (2015, 3, 4).toDateString(),
+    new Date (2011, 2, 5).toDateString(),
+    new Date (2017, 4, 6).toDateString(),
+    new Date (2000, 8, 9).toDateString(),
+  ];
 
   constructor() {
 
