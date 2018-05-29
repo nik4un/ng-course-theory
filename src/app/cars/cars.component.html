@@ -1,10 +1,13 @@
 <input type="text" class="form-control" [(ngModel)]="carName">
-<p>{{ carName }}</p>
 <button class="btn btn-primary" (click)="addCar()">Добавить машину</button>
-<p  *ngIf="!addCarStatus; else successStatus">Машина не добавлена!</p>
+<p  *ngIf="!addCarStatus; else successStatus">Добавте машину!</p>
 <ng-template #successStatus>
   <p>Машина добавлена!</p>
 </ng-template>
 <hr>
-<app-car></app-car>
-<app-car></app-car>
+<p *ngFor="let car of cars; let ind = index"><b>{{ ind + 1 }}</b>. Название: {{ car }}</p>
+<ul>
+  <li *ngFor="let item of items; let i = index">
+    <b>{{ i + 1 }}</b> - <i>{{ item.name }}</i>
+  </li>
+</ul>
