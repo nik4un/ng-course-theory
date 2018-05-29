@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cars',
@@ -7,12 +7,27 @@ import { Component } from '@angular/core';
 })
 export class CarsComponent {
 
-  canAddCar = false;
+  addCarStatus = '';
+  inputText1 = '';
+  inputText2 = '';
+  inputText3 = '';
 
   constructor() {
-    setTimeout(() => {
-      this.canAddCar = true;
-    }, 4000);
+
   }
 
+  addCar() {
+    this.addCarStatus = 'Машина добавлена';
+  }
+
+  onKeyUp1(event: Event) {
+    this.inputText1 = (<HTMLInputElement>event.target).value;
+  }
+  onKeyUp2(value) {
+    this.inputText2 = value;
+  }
+  onKeyUp3(event) {
+      this.inputText3 = event.target.value;
+
+  }
 }
