@@ -1,13 +1,3 @@
-.list-item {
-  list-style-type: none;
-  padding: 0;
+.big-text {
+  font-size: 150%;
 }
-
-.list-item div {
-  margin: 0;
-  padding-left: 10px;
-}
-
-.big-text  {
-  font-size: 70%;
- }

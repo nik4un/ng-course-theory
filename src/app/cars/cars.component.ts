@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-cars',
@@ -8,28 +8,30 @@ import { Component, OnInit } from '@angular/core';
 export class CarsComponent {
 
   carName = '';
-  addCarStatus = false;
-  cars = ['Ford', 'Audi', 'BMW', 'Mazda', 'LADA', 'BENTLY'];
-  dates = [
-    new Date (2015, 3, 4).toDateString(),
-    new Date (2011, 2, 5).toDateString(),
-    new Date (2017, 4, 6).toDateString(),
-    new Date (2000, 8, 9).toDateString(),
-  ];
+  carYear = 2018;
+
+  cars =
+  [{
+    name: 'Ford',
+    year: 2015
+  }, {
+    name: 'Mazda',
+    year: 2010
+  }, {
+    name: 'Audi',
+    year: 2018
+  }];
 
   constructor() {
-
   }
 
   addCar() {
-    this.addCarStatus = true;
-    this.cars.push(this.carName);
+    this.cars.push({
+      name: this.carName,
+      year: this.carYear
+    });
     this.carName = '';
-    setTimeout(() => this.addCarStatus = false, 1100);
-  }
-
-  setBigCarText(car: string) {
-    return car.length > 4;
+    this.carYear = 2018;
   }
 
 }
