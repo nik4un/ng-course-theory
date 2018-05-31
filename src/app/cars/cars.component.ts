@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
-  styleUrls: ['./cars.component.css']
+  styleUrls: ['./cars.component.css'], encapsulation: ViewEncapsulation.None
+  // None - Отменяет локальное поведение стилей
+  // Native - ЗадаЁт область видимости стилей (излированную от других) только этим компонентом и вложенными в него
 })
 export class CarsComponent {
 

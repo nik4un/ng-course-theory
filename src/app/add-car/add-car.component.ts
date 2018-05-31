@@ -9,7 +9,7 @@ export class AddCarComponent implements OnInit {
 
   carName = '';
   carYear = 2018;
-  @Output()  addNewCar = new EventEmitter<{ name: string, year: number }>();
+  @Output()  addNewCar = new EventEmitter<{ name: string, year: number }>(); //  декаратор @Output()
 
   constructor() { }
 
