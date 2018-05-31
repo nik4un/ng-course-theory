@@ -1,4 +1,11 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Output,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-add-car',
@@ -7,23 +14,23 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class AddCarComponent implements OnInit {
 
-  carName = '';
-  carYear = 2018;
   @Output()  addNewCar = new EventEmitter<{ name: string, year: number }>(); //  декаратор @Output()
+  @ViewChild('carYearInput') carYearInput: ElementRef;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  addCar() {
+  addCar(carNameEl: HTMLInputElement) {
+
     this.addNewCar.emit({
-      name: this.carName,
-      year: this.carYear,
+      name: carNameEl.value,
+      year: +this.carYearInput.nativeElement.value, // + чтобы строку перевести в число
     });
 
-    this.carName = '';
-    this.carYear = 2018;
+    carNameEl.value = '';
+    this.carYearInput.nativeElement.value = 2018;
   }
 
 }
