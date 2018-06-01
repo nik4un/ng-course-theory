@@ -11,13 +11,15 @@ export class CarsComponent {
   [{
     name: 'Ford',
     year: 2015
-  }, {
-    name: 'Mazda',
-    year: 2010
-  }, {
-    name: 'Audi',
-    year: 2018
-  }];
+  },
+  // {
+  //   name: 'Mazda',
+  //   year: 2010
+  // }, {
+  //   name: 'Audi',
+  //   year: 2018
+  // }
+];
 
   constructor() {
   }
@@ -26,4 +28,11 @@ export class CarsComponent {
     this.cars.push(car);
   }
 
+  changeCarName() {
+    this.cars[0].name = 'New car name';
+  }
+
+  deleteCar() {
+    this.cars.splice(0, 1);
+  }
 }
