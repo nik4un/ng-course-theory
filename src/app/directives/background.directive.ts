@@ -2,9 +2,9 @@ import {
   Directive,
   ElementRef,
   OnInit,
-  Renderer2,
   HostListener,
-  HostBinding
+  HostBinding,
+  Input
 } from '@angular/core';
 
 @Directive({
@@ -12,31 +12,20 @@ import {
 })
 export class BackgroundDirective implements OnInit {
 
+  @Input() hoveColor = 'yellow';
+  @Input() defaultColor = 'cyan';
 
-  @HostBinding('style.border') border: string; // Способ 2 стилем через директивы без использования рендерера
-
-  constructor(private element: ElementRef, private renderer: Renderer2) {}
+  @HostBinding('style.backgroundColor') background: string;
 
   ngOnInit() {
-
+    this.background = this.defaultColor;
   }
 
-  // Эта конструкция, когда нужно использовать событие
-  // @HostListener('mouseenter', ['$event']) onmouseenter(evt: Event) {
-  //   console.log(evt);
-  // }
-
-  @HostListener('mouseenter') onMousEenter() {
-    const { nativeElement } = this.element;
-    this.renderer.addClass(nativeElement, 'white-text');
-    this.renderer.setStyle(nativeElement, 'background-color', 'red');
-    this.border = '2px solid green'; // Способ 2
+  @HostListener('mouseenter') mouseEnter() {
+    this.background = this.hoveColor;
   }
 
-  @HostListener('mouseleave') onMousLeave() {
-    const { nativeElement } = this.element;
-    this.renderer.removeClass(nativeElement, 'white-text');
-    this.renderer.setStyle(nativeElement, 'background-color', 'transparent');
-    this.border = 'none'; // Способ 2
+  @HostListener('mouseleave') mouseLeave() {
+    this.background = this.defaultColor;
   }
 }
