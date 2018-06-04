@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   headerText = 'Создание своей директивы.';
+  items = [1, 2, 3, 4, 5];
+
+  current = 1;
+
+  onClick(num: number) {
+    this.current = num;
+  }
 }
