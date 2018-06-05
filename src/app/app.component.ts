@@ -19,6 +19,16 @@ import { Component } from '@angular/core';
       <h6>{{ money | currency:'EUR':false }}</h6>
       <hr>
       <h6>{{ date }}</h6>
+<<<<<<< HEAD
+=======
+      <h6>{{ date | date}}</h6>
+      <hr>
+      <h6>{{ amount }}</h6>
+      <h6>{{ amount | percent}}</h6>
+      <hr>
+      <h6>{{ object }}</h6>
+      <pre>{{ object | json }}</pre><!--JSON.stringify(object)-->
+>>>>>>> a0fc70b525b90201567b7b225e2b726f56b6c6f2
     </div>
   `
 })
