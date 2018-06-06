@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div class="col-xs-8 col-xs-offset-2">
+      <h1>{{ asyncTitle | async }}</h1>
       <input type="text" class="form-control" [(ngModel)]="searchCar">
       <button class="btn btn-primary" (click)="addCar()">Добавить</button>
       <hr>
@@ -26,6 +27,12 @@ export class AppComponent {
     { name: 'Mercedes', descr: 'WFM 5' },
     { name: 'BMW', descr: 'WFM 6'  }
   ];
+
+  asyncTitle = new Promise(resolve => {
+    setTimeout(() => {
+      resolve('Async Title 3 seconds');
+    }, 3000);
+  });
 
   addCar() {
     this.cars.push({
