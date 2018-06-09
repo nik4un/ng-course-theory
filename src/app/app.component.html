@@ -1,7 +1,8 @@
 <div class="col-xs-8 col-xs-offset-2">
   <form (ngSubmit)="submitForm(formId)" #formId="ngForm">
-    <div class="form-group">
-      <label for="email">Email</label>
+    <div ngModelGroup="user" #userId="ngModelGroup">
+      <div class="form-group">
+        <label for="email">Email</label>
         <input
           id="email"
           type="text"
@@ -13,10 +14,10 @@
           #emailId="ngModel"
           [ngClass]="{'input-err': emailId.invalid && emailId.touched}"
         >
-      <p class="err-message" *ngIf="emailId.invalid && emailId.touched">E-mail введён некорректно</p>
-    </div>
-    <div class="form-group">
-      <label for="pass">Пароль</label>
+        <p class="err-message" *ngIf="emailId.invalid && emailId.touched">E-mail введён некорректно</p>
+      </div>
+      <div class="form-group">
+        <label for="pass">Пароль</label>
         <input
           id="pass"
           type="password"
@@ -26,22 +27,24 @@
           required
           #passId="ngModel"
           [ngClass]="{'input-err': passId.invalid && passId.touched}"
-         >
-      <p class="err-message" *ngIf="passId.invalid && passId.touched">Пароль не должен быть пустым</p>
+        >
+        <p class="err-message" *ngIf="passId.invalid && passId.touched">Пароль не должен быть пустым</p>
+      </div>
     </div>
+    <p class="err-message" *ngIf="userId.invalid && userId.touched">Данные введены некорректно</p>
     <div class="form-group">
       <label for="country">Выберите страну</label>
-        <select
-          id="country"
-          class="form-control"
-          [ngModel]="defaultCountry"
-          name="country"
-          required=""
-        >
-          <option value="by">Белоруссия</option>
-          <option value="ru">Россия</option>
-          <option value="ua">Украина</option>
-        </select>
+      <select
+        id="country"
+        class="form-control"
+        [ngModel]="defaultCountry"
+        name="country"
+        required=""
+      >
+        <option value="by">Белоруссия</option>
+        <option value="ru">Россия</option>
+        <option value="ua">Украина</option>
+      </select>
     </div>
     <div class="radio" *ngFor="let ans of answers">
       <label>
@@ -58,6 +61,7 @@
       class="btn btn-success"
       type="submit"
       [disabled]="!formId.valid"
-    >Сохранить</button>
+    >Сохранить
+    </button>
   </form>
 </div>
