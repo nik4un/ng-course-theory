@@ -10,7 +10,10 @@
           name="email"
           required
           email
+          #emailId="ngModel"
+          [ngClass]="{'input-err': emailId.invalid && emailId.touched}"
         >
+      <p class="err-message" *ngIf="emailId.invalid && emailId.touched">E-mail введён некорректно</p>
     </div>
     <div class="form-group">
       <label for="pass">Пароль</label>
@@ -21,7 +24,10 @@
           ngModel
           name="pass"
           required
+          #passId="ngModel"
+          [ngClass]="{'input-err': passId.invalid && passId.touched}"
          >
+      <p class="err-message" *ngIf="passId.invalid && passId.touched">Пароль не должен быть пустым</p>
     </div>
     <div class="form-group">
       <label for="country">Выберите страну</label>
