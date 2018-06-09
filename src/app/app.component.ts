@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'; // Способ 1
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  @ViewChild('formId') form: NgForm;
 
   answers = [
     {
@@ -21,7 +23,27 @@ export class AppComponent {
   defaultAnswer = 'no';
   defaultCountry = 'ua';
 
-  submitForm(form: NgForm) {
-    console.log(`Submitted!`, form);
+  formData = {};
+  isSubmitted = false;
+
+  addRandEmail()  {
+    const randEmail = 'nato@gmail.com';
+    // this.form.setValue({
+    //   user: {
+    //     pass: '',
+    //     email: randEmail,
+    //   },
+    //   country: '',
+    //   answer: '',
+    // });
+    this.form.form.patchValue({
+      user: {email: randEmail}
+    });
+  }
+
+  submitForm() {
+    this.isSubmitted = true;
+    this.formData = this.form.value;
+    this.form.resetForm(); // очистка формы
   }
 }

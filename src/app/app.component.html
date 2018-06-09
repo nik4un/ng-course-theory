@@ -15,6 +15,7 @@
           [ngClass]="{'input-err': emailId.invalid && emailId.touched}"
         >
         <p class="err-message" *ngIf="emailId.invalid && emailId.touched">E-mail введён некорректно</p>
+        <button type="button" class="btn btn-primary" (click)="addRandEmail()">Добавить случайный e-mail</button>
       </div>
       <div class="form-group">
         <label for="pass">Пароль</label>
@@ -64,5 +65,10 @@
     >Сохранить
     </button>
   </form>
+  <div *ngIf="isSubmitted">
+    <pre>
+      {{formData | json}}
+    </pre>
+  </div>
 </div>
 
