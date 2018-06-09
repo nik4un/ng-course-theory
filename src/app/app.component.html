@@ -1,6 +1,5 @@
 <div class="col-xs-8 col-xs-offset-2">
-  <form (ngSubmit)="submitForm(formId)" #formId="ngForm"><!--Способ 1 -->
-    <!--<form (ngSubmit)="submitForm()" #formId="ngForm"><!-- Способ 2-->
+  <form (ngSubmit)="submitForm(formId)" #formId="ngForm">
     <div class="form-group">
       <label for="email">Email</label>
         <input
@@ -9,8 +8,9 @@
           class="form-control"
           ngModel
           name="email"
+          required
+          email
         >
-      <!--дерективой ngModel указываем angular о том, что за этим инпутом нужно следить-->
     </div>
     <div class="form-group">
       <label for="pass">Пароль</label>
@@ -20,6 +20,7 @@
           class="form-control"
           ngModel
           name="pass"
+          required
          >
     </div>
     <div class="form-group">
@@ -29,6 +30,7 @@
           class="form-control"
           ngModel
           name="country"
+          required=""
         >
           <option value="by">Белоруссия</option>
           <option value="ru">Россия</option>
@@ -42,9 +44,14 @@
           [value]="ans.type"
           ngModel
           name="answer"
+          required
         > {{ans.text}}
       </label>
     </div>
-    <button class="btn btn-success" type="submit">Сохранить</button>
+    <button
+      class="btn btn-success"
+      type="submit"
+      [disabled]="!formId.valid"
+    >Сохранить</button>
   </form>
 </div>
