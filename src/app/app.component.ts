@@ -10,10 +10,19 @@ export class AppComponent {
   cars = [];
   carName = '';
   carColor = '';
+  colors = [
+    'pink',
+    'yellow',
+    'orange',
+    'violet',
+    'brown',
+    'lime',
+    'aqua'
+  ];
 
   constructor(private carsService: CarsService) {}
 
-    loadCars() {
+  loadCars() {
       this.carsService
         .get(' http://localhost:3000/cars')
         .subscribe((response) => {
@@ -33,6 +42,19 @@ export class AppComponent {
       });
     this.carName = '';
     this.carColor = '';
+  }
+
+  getRandColor() {
+    const num = Math.round(Math.random() * (this.colors.length - 1));
+    return this.colors[num];
+  }
+
+  setNewColor(car) {
+    this.carsService
+      .changeColor(' http://localhost:3000/cars', car, this.getRandColor())
+      .subscribe((data) => {
+        console.log(data);
+      });
   }
   }
 
