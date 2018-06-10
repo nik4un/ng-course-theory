@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ifTrue } from 'codelyzer/util/function';
+import { reject, resolve } from 'q';
 
 @Component({
   selector: 'app-root',
@@ -27,8 +28,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       user: new FormGroup({
-        email:  new FormControl('', [Validators.required, Validators.email]),
-        pass: new FormControl('', [
+        email:  new FormControl('',
+          [Validators.required, Validators.email],
+          [this.checkForEmail]), // асинхронный валидатор передаётся третьим аргументом
+        pass: new FormControl('',
+          [
           Validators.required,
           this.checkForLength.bind(this)  // с помощью метода bind передаём контекст, с которым нужно вызвать данную функцию
         ]),
@@ -40,6 +44,7 @@ export class AppComponent implements OnInit {
 
   onSubmit() {
     console.log(`Submitted!`, this.form);
+    this.ngOnInit();
   }
 
   // Валидатор проверки длины введенного значения
@@ -52,6 +57,20 @@ export class AppComponent implements OnInit {
       };
     }
     return null;
+  }
+
+  checkForEmail(control: FormControl): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'test@m') {
+          resolve({
+            'emailIsUsed': true
+          });
+        } else {
+          resolve(null);
+        }
+      }, 3000);
+    });
   }
 
 }
