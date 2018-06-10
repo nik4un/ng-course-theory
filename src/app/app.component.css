@@ -1,6 +1,12 @@
 .err-message {
   font-size: 10px;
+  color: #ffe358;
+  color: #5ccdff;
+  color: #ff74bb;
+  color: #56ef82;
+
   color: red;
+
 }
 .input-err {
   border: 1px solid red;
