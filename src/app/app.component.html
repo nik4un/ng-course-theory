@@ -7,7 +7,12 @@
         type="text"
         class="form-control"
         formControlName="email"
+        [ngClass]="{'input-err': form.get('email').invalid && form.get('email').touched}"
       >
+      <p
+        class="err-message"
+        *ngIf="form.get('email').invalid && form.get('email').touched"
+      >Введите корректный e-mail</p>
     </div>
     <div class="form-group">
       <label for="passId">Пароль</label>
@@ -16,7 +21,12 @@
         type="password"
         class="form-control"
         formControlName="pass"
+        [ngClass]="{'input-err': form.get('pass').invalid && form.get('pass').touched}"
       >
+      <p
+        class="err-message"
+        *ngIf="form.get('pass').invalid && form.get('pass').touched"
+      >Пароль не должен быть пустым</p>
     </div>
     <div class="form-group">
       <label for="countryId">Выберите страну</label>
@@ -42,8 +52,10 @@
     <button
       class="btn btn-success"
       type="submit"
+      [disabled]="form.invalid"
     >Сохранить
     </button>
   </form>
 </div>
 
+х
