@@ -9,6 +9,16 @@
       "name": "Mazda",
       "color": "gray",
       "id": 2
+    },
+    {
+      "name": "BMW",
+      "color": "blue",
+      "id": 3
+    },
+    {
+      "name": "Volvo",
+      "color": "red",
+      "id": 4
     }
   ]
 }

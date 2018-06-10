@@ -9,4 +9,8 @@ export class CarsService {
   public get(url: string): Observable<any> {
     return this.httpClient.get(url);
   }
+
+  public addCar(url: string, car: object) {
+    return this.httpClient.post(url, car);
+  }
 }
