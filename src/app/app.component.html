@@ -1,32 +1,34 @@
 <div class="col-xs-8 col-xs-offset-2">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="emailId">Email</label>
-      <input
-        id="emailId"
-        type="text"
-        class="form-control"
-        formControlName="email"
-        [ngClass]="{'input-err': form.get('email').invalid && form.get('email').touched}"
-      >
-      <p
-        class="err-message"
-        *ngIf="form.get('email').invalid && form.get('email').touched"
-      >Введите корректный e-mail</p>
-    </div>
-    <div class="form-group">
-      <label for="passId">Пароль</label>
-      <input
-        id="passId"
-        type="password"
-        class="form-control"
-        formControlName="pass"
-        [ngClass]="{'input-err': form.get('pass').invalid && form.get('pass').touched}"
-      >
-      <p
-        class="err-message"
-        *ngIf="form.get('pass').invalid && form.get('pass').touched"
-      >Пароль не должен быть пустым</p>
+    <div formGroupName="user">
+      <div class="form-group">
+        <label for="emailId">Email</label>
+        <input
+          id="emailId"
+          type="text"
+          class="form-control"
+          formControlName="email"
+          [ngClass]="{'input-err': form.get('user.email').invalid && form.get('user.email').touched}"
+        >
+        <p
+          class="err-message"
+          *ngIf="form.get('user.email').invalid && form.get('user.email').touched"
+        >Введите корректный e-mail</p>
+      </div>
+      <div class="form-group">
+        <label for="passId">Пароль</label>
+        <input
+          id="passId"
+          type="password"
+          class="form-control"
+          formControlName="pass"
+          [ngClass]="{'input-err': form.get('user.pass').invalid && form.get('user.pass').touched}"
+        >
+        <p
+          class="err-message"
+          *ngIf="form.get('user.pass').invalid && form.get('user.pass').touched"
+        >Пароль не должен быть пустым</p>
+      </div>
     </div>
     <div class="form-group">
       <label for="countryId">Выберите страну</label>
