@@ -27,7 +27,10 @@
         <p
           class="err-message"
           *ngIf="form.get('user.pass').invalid && form.get('user.pass').touched"
-        >Пароль не должен быть пустым</p>
+        >
+          <span *ngIf="form.get('user.pass').errors['required']">Пароль не должен быть пустым</span>
+          <span *ngIf="form.get('user.pass').errors['lengthError']">Пароль не должен быть меньше {{charsCount}} символов!</span>
+        </p>
       </div>
     </div>
     <div class="form-group">
@@ -59,5 +62,3 @@
     </button>
   </form>
 </div>
-
-х
