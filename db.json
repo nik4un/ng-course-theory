@@ -1,10 +1,14 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" },
-    { "id": 2, "title": "json-server new", "author": "typinew" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment New", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
+  "cars": [
+    {
+      "name": "Ford",
+      "color": "white",
+      "id": 1
+    },
+    {
+      "name": "Mazda",
+      "color": "gray",
+      "id": 2
+    }
+  ]
 }
