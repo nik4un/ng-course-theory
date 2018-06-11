@@ -56,5 +56,13 @@ export class AppComponent {
         console.log(data);
       });
   }
+
+  deleteCar(car) {
+    this.carsService
+      .deleteCar(' http://localhost:3000/cars', car)
+      .subscribe((data) => {
+        this.cars = this.cars.filter(elem => elem.id !== car.id);
+      });
+  }
   }
 

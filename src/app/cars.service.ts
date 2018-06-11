@@ -18,4 +18,8 @@ export class CarsService {
     car.color = color;
     return this.httpClient.put(`${url}/${car.id}`, car);
   }
+
+  public deleteCar(url:string, car: any) {
+    return this.httpClient.delete(`${url}/${car.id}`);
+  }
 }
