@@ -24,7 +24,7 @@ export class AppComponent {
 
   loadCars() {
       this.carsService
-        .get(' http://localhost:3000/cars')
+        .getCar(' http://localhost:3000/cars')
         .subscribe((response) => {
           this.cars = response;
         });
