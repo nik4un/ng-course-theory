@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
 
 
 @Injectable()
@@ -13,7 +15,12 @@ export class CarsService {
     });
     return this.httpClient.get(url, {
       headers: headers
-    });
+    }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.log('HttpErrorResponse', error);
+        return throwError('Сервер не доступен. Попробуйте позже.');
+      })
+    );
   }
 
   public addCar(url: string, car: object) {

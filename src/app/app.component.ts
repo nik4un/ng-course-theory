@@ -24,10 +24,14 @@ export class AppComponent {
 
   loadCars() {
       this.carsService
-        .getCar(' http://localhost:3000/cars')
-        .subscribe((response) => {
-          this.cars = response;
-        });
+        .getCar(' http://localhost:3100/cars')
+        .subscribe(
+          (response) => {
+            this.cars = response;
+            },
+          (error) => {
+            alert(error);
+          });
     }
 
   addCar() {
@@ -37,8 +41,9 @@ export class AppComponent {
     };
     this.carsService.
       addCar(' http://localhost:3000/cars', car)
-      .subscribe((json) => {
-        this.cars.push(json);
+      .subscribe(
+        (data) => {
+        this.cars.push(data);
       });
     this.carName = '';
     this.carColor = '';
@@ -60,7 +65,7 @@ export class AppComponent {
   deleteCar(car) {
     this.carsService
       .deleteCar(' http://localhost:3000/cars', car)
-      .subscribe((data) => {
+      .subscribe(() => {
         this.cars = this.cars.filter(elem => elem.id !== car.id);
       });
   }
