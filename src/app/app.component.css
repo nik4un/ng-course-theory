@@ -1,11 +1,11 @@
 .active {
-  background-color: lightblue;
+  background-color: #cccccc;
 }
 .navbar {
   width: 100%;
 }
 .navbar > .container-fluid {
-  background-color: #dddddd;
+  background-color: #eeeeee;
   border-radius: 3px;
   border: 1px solid #aaaaaa;
 }
@@ -14,4 +14,8 @@
 }
 .nav > li {
   padding: 0 10px;
+}
+
+.navbar-brand a{
+  color: #555555;
 }
