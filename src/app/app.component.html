@@ -2,8 +2,19 @@
   <nav style="margin-bottom: 20px;" class="navbar navbar-brand">
     <div class="container-fluid">
       <ul class="nav  navbar-nav">
-        <li class="active"><a href="#">Главная</a></li>
-        <li><a href="#">Машины</a></li>
+        <li
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <!--атрибут пишется не в квадратных скобках, если значение это строка-->
+          <a routerLink="/">Главная</a>
+        </li>
+        <li
+          routerLinkActive="active"
+        >
+          <!--атрибут пишется в квадратных скобках, если значение это js code-->
+          <a [routerLink]="'/cars'">Машины</a>
+        </li>
       </ul>
     </div>
   </nav>

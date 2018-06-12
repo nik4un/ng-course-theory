@@ -2,9 +2,12 @@
   background-color: lightblue;
 }
 .navbar {
+  width: 100%;
 }
 .navbar > .container-fluid {
-  background-color: lightgrey;
+  background-color: #dddddd;
+  border-radius: 3px;
+  border: 1px solid #aaaaaa;
 }
 .navbar-nav {
   flex-direction: row;
