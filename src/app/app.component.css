@@ -1,0 +1,14 @@
+.active {
+  background-color: lightblue;
+}
+.navbar {
+}
+.navbar > .container-fluid {
+  background-color: lightgrey;
+}
+.navbar-nav {
+  flex-direction: row;
+}
+.nav > li {
+  padding: 0 10px;
+}
