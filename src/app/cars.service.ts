@@ -19,5 +19,5 @@ export class CarsService {
       name: 'Mercedes',
       id: 4
     }
-  ]
+  ];
 }
