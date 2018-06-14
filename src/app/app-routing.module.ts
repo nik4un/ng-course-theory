@@ -5,14 +5,18 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { CarsPageComponent } from './cars-page/cars-page.component';
 import { CarPageComponent } from './car-page/car-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthGuard } from './auth-guard.service';
+import { NewPageComponent } from './new-page/new-page.component';
 
 const appRoutes: Routes = [
-  // используем children для избежония дублирования части кода при задании path
-  // и в HTML добавляем в нужное место тег router-outlet
-  { path: 'cars', component: CarsPageComponent, children: [
+  { path: 'cars',
+    component: CarsPageComponent,
+    canActivate: [AuthGuard],
+    children: [
       { path: ':carId/:carName', component: CarPageComponent }
     ] },
   { path: '', component: HomePageComponent },
+  { path: 'new-page', component: NewPageComponent },
   { path: 'not-found', component: NotFoundComponent },
   // path: '**' - путь для перехода на компнент, при невозможности перехода по некому адресу
   { path: '**', redirectTo: '/not-found' }
