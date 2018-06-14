@@ -6,8 +6,11 @@ import { CarsPageComponent } from './cars-page/cars-page.component';
 import { CarPageComponent } from './car-page/car-page.component';
 
 const appRoutes: Routes = [
-  { path: 'cars', component: CarsPageComponent },
-  { path: 'cars/:carId/:carName', component: CarPageComponent },
+  // используем children для избежония дублирования части кода при задании path
+  // и в HTML добавляем в нужное место тег router-outlet
+  { path: 'cars', component: CarsPageComponent, children: [
+      { path: ':carId/:carName', component: CarPageComponent }
+    ] },
   { path: '', component: HomePageComponent }
 ];
 
