@@ -5,19 +5,27 @@ export class CarsService {
   cars = [
     {
       name: 'Ford',
-      id: 1
+      id: 1,
+      year: 2018,
+      color: 'red'
     },
     {
       name: 'Audi',
-      id: 2
+      id: 2,
+      year: 2013,
+      color: 'blue'
     },
     {
       name: 'BMW',
-      id: 3
+      id: 3,
+      year: 2010,
+      color: 'yellow'
     },
     {
       name: 'Mercedes',
-      id: 4
+      id: 4,
+      year: 2008,
+      color: 'green'
     }
   ];
 }

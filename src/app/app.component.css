@@ -1,19 +1,23 @@
 .active {
   background-color: #cccccc;
 }
+
 .navbar {
   width: 100%;
   margin-bottom: 20px;
   padding-left: 0;
 }
+
 .navbar > .container-fluid {
   background-color: #eeeeee;
   border-radius: 3px;
   border: 1px solid #aaaaaa;
 }
+
 .navbar-nav {
   flex-direction: row;
 }
+
 .nav > li {
   padding: 0 10px;
 }
@@ -21,6 +25,7 @@
 .navbar-brand a {
   color: #555555;
 }
+
 .row {
   margin-left: 0;
   margin-right: 0;
