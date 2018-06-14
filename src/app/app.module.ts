@@ -4,32 +4,28 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { CarsService } from './cars.service';
-import { AppRoutingModule } from './app-routing.module';
-import { CarsPageComponent } from './cars-page/cars-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { CarPageComponent } from './car-page/car-page.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth-guard.service';
-import { NewPageComponent } from './new-page/new-page.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ColorDirective } from './shared/color.directive';
+import { HeaderComponent } from './header/header.component';
+import { CarsModule } from './cars-page/cars.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    CarsPageComponent,
-    CarPageComponent,
-    NotFoundComponent,
-    NewPageComponent
+    ColorDirective,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CarsModule // здесь подключается созданный нами модуль
   ],
-  providers: [CarsService, AuthGuard, AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
