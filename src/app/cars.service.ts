@@ -6,13 +6,13 @@ export class CarsService {
     {
       name: 'Ford',
       id: 1,
-      year: 2017,
+      year: 2018,
       color: 'red'
     },
     {
       name: 'Audi',
       id: 2,
-      year: 2010,
+      year: 2013,
       color: 'blue'
     },
     {
@@ -27,5 +27,5 @@ export class CarsService {
       year: 2000,
       color: 'grey'
     }
-  ]
+  ];
 }

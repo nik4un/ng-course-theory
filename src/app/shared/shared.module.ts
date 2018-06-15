@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { ColorDirective } from './color.directive';
 
 @NgModule({
