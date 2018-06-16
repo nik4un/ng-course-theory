@@ -24,16 +24,42 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
       transition('start <=> end', animate('800ms ease-in')),
       transition('start => active', animate(400)),
       transition('active => end', animate(400))
+    ]),
+    trigger('multi', [
+      state('start', style({
+        width: '170px',
+        height: '170px',
+        border: '10px solid blue',
+        backgroundColor: 'green'
+      })),
+      state('end', style({
+        width: '150px',
+        height: '150px',
+        border: '10px solid blue',
+        backgroundColor: 'green',
+        transform: 'rotate(45deg)',
+        borderRadius: '50%'
+      })),
+      transition('start <=> end', [
+        style({
+          backgroundColor: 'red'
+        }),
+        animate(500, style({
+          backgroundColor: 'yellow'
+        })),
+        animate(1000)
+      ])
     ])
   ]
 })
 export class AppComponent {
-  cklickedDivState = 'start';
+  // cklickedDivState = 'start';
+  multiState = 'start';
 
-  changeDivState() {
-    this.cklickedDivState = 'end';
-    setTimeout(() => {
-      this.cklickedDivState = 'start';
-    }, 2000);
-  }
+  // changeDivState() {
+  //   this.cklickedDivState = 'end';
+  //   setTimeout(() => {
+  //     this.cklickedDivState = 'start';
+  //   }, 2000);
+  // }
 }
