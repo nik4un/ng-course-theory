@@ -1,10 +1,8 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 export const divTrigger = trigger('divTrigger', [
-  state('show', style({
-    opacity: 1 // это свойство можно не указывать, т.к. у всех элементов по-умолчонию оно 1
-  })),
-  transition('void => show', [
+  // 'void => *  -->  ':enter'
+   transition(':enter', [
     style({
       opacity: 0
     }),
@@ -12,7 +10,22 @@ export const divTrigger = trigger('divTrigger', [
       opacity: 1
     }))
   ]),
-  transition('show => void', animate(500, style({
+  // '* => void' --> ':leave'
+  transition(':leave', animate(500, style({
     opacity: 0
   })))
+]);
+// * здесь - это любое состояние;
+// void => * - переход из void в любое состояние;
+// * => void - переход из любого состояния в void
+
+export const changeWithTrigger = trigger('changeWith', [
+  transition('* => *', [
+    animate(1000, style({
+      width: '10px'
+    })),
+    animate(1000, style({
+      width: '*' // * обозначает изначальную ширину или высоту
+    }))
+  ])
 ]);
