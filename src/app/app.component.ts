@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { divTrigger, changeWithTrigger } from './app.animations';
+import { divTrigger } from './app.animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  animations: [divTrigger, changeWithTrigger]
+  animations: [divTrigger]
 })
 export class AppComponent {
   isVisible = false;
