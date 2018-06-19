@@ -18,7 +18,6 @@ describe('CarComponent', () => {
     // и определяем их в beforeEach
     fixture = TestBed.createComponent(CarComponent);
     component = fixture.debugElement.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create the component «car»', () => {
@@ -33,7 +32,7 @@ describe('CarComponent', () => {
   it('should render h1 tag with title «header»', () => {
     // const fixture = TestBed.createComponent(CarComponent);
     // для того, чтобы angular применил изменеия, проишедшие в компонете в шаблоне
-    // fixture.detectChanges();
+    fixture.detectChanges();
     const nativeElement = fixture.debugElement.nativeElement;
     const h1 = nativeElement.querySelector('h1').textContent;
     expect(h1).toEqual('My car header');
@@ -45,7 +44,25 @@ describe('CarComponent', () => {
       // инжектим сервис в тест, операция похожая на инжект сервиса в конструктор
       // constructor(private carService: CarService) { }
     const carService = fixture.debugElement.injector.get(CarService);
-    // fixture.detectChanges();
+    fixture.detectChanges();
     expect(component.isCarVisible).toEqual(carService.getVisibility());
+  });
+
+  it(`should display car if is visible`, () => {
+    const carService = fixture.debugElement.injector.get(CarService);
+    carService.showCar();
+    fixture.detectChanges();
+    const nativeElement = fixture.debugElement.nativeElement;
+    const text = nativeElement.querySelector('span').textContent;
+    expect(text).toEqual('Car is visible');
+  });
+
+    it(`should display car if isn't visible`, () => {
+      const carService = fixture.debugElement.injector.get(CarService);
+      carService.hideCar();
+      fixture.detectChanges();
+      const nativeElement = fixture.debugElement.nativeElement;
+      const text = nativeElement.querySelector('span').textContent;
+      expect(text).toEqual('Nothing to show');
   });
 });
