@@ -11,11 +11,15 @@ export class CarComponent implements OnInit {
 
   isCarVisible: boolean;
   title = 'My car header';
+  carName;
 
   constructor(private carService: CarService) { }
 
   ngOnInit() {
     this.isCarVisible = this.carService.getVisibility();
-  }
+    this.carService.getCarName().then(data => {
+      this.carName  = data;
+    });
+    }
 
 }

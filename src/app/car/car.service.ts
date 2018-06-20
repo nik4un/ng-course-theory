@@ -4,10 +4,20 @@ export class CarService {
   showCar() {
     this.isVisible = true;
   }
-   hideCar() {
+
+  hideCar() {
     this.isVisible = false;
-   }
-    getVisibility() {
+  }
+
+  getVisibility() {
     return this.isVisible;
-    }
+  }
+
+  getCarName() {
+    return new Promise((resolve => {
+      setTimeout(() => {
+        resolve('Ford');
+      }, 2000);
+    }));
+  }
 }

@@ -1,68 +1,58 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CarComponent } from './car.component';
 import { CarService } from './car.service';
 
 describe('CarComponent', () => {
-  // хоршо бы вынести повторяющийся код типа:
-  // const fixture = TestBed.createComponent(CarComponent);
-  // для этого задаем переменную типа ComponentFixture, у которой в свою очередь тип CarComponent
+  let carService: CarService;
   let fixture: ComponentFixture<CarComponent>;
-  // и другую повторяющуюся переменную с соответствующим типом
   let component: CarComponent;
+  let nativeElement;
 
-  // 1. Регистрация комрпонента внутри тестов, как-бы эмулируем обычную регистрацию компонента
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CarComponent]
     });
-    // и определяем их в beforeEach
     fixture = TestBed.createComponent(CarComponent);
+    carService = fixture.debugElement.injector.get(CarService);
     component = fixture.debugElement.componentInstance;
+    nativeElement = fixture.debugElement.nativeElement;
   });
 
   it('should create the component «car»', () => {
-      // 2. Создание компонента внутри теста
-    // const fixture = TestBed.createComponent(CarComponent);
-      // 3. Получаем экземпляр компонента
-    // const component = fixture.debugElement.componentInstance;
-      // 4. Ожидаем получить
     expect(component).toBeTruthy();
   });
 
   it('should render h1 tag with title «header»', () => {
-    // const fixture = TestBed.createComponent(CarComponent);
-    // для того, чтобы angular применил изменеия, проишедшие в компонете в шаблоне
     fixture.detectChanges();
-    const nativeElement = fixture.debugElement.nativeElement;
     const h1 = nativeElement.querySelector('h1').textContent;
     expect(h1).toEqual('My car header');
   });
 
   it('should inject CarService', () => {
-    // const fixture = TestBed.createComponent(CarComponent);
-    // const component = fixture.debugElement.componentInstance;
-      // инжектим сервис в тест, операция похожая на инжект сервиса в конструктор
-      // constructor(private carService: CarService) { }
-    const carService = fixture.debugElement.injector.get(CarService);
     fixture.detectChanges();
     expect(component.isCarVisible).toEqual(carService.getVisibility());
   });
 
   it(`should display car if is visible`, () => {
-    const carService = fixture.debugElement.injector.get(CarService);
     carService.showCar();
     fixture.detectChanges();
-    const nativeElement = fixture.debugElement.nativeElement;
     const text = nativeElement.querySelector('span').textContent;
     expect(text).toEqual('Car is visible');
   });
 
-    it(`should display car if isn't visible`, () => {
-      const carService = fixture.debugElement.injector.get(CarService);
-      carService.hideCar();
-      fixture.detectChanges();
-      const nativeElement = fixture.debugElement.nativeElement;
-      const text = nativeElement.querySelector('span').textContent;
-      expect(text).toEqual('Nothing to show');
+  it(`should display car if isn't visible`, () => {
+    carService.hideCar();
+    fixture.detectChanges();
+    const text = nativeElement.querySelector('span').textContent;
+    expect(text).toEqual('Nothing to show');
   });
+
+  // тест асинхронных данных
+  it(`should get car name «Ford»`, async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(component.carName).toEqual('Ford');
+    });
+  }));
 });
+
